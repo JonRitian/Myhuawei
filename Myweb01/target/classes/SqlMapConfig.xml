@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <package name="com.wzx.domain"/>
+    </typeAliases>
+
+    <environments default="mybatis">
+        <environment id="mybatis">
+
+            <transactionManager type="JDBC"/>
+
+            <dataSource type="POOLED">
+                <!--    四大信息 -->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/travel?characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--   一个mapper标签可以指定一个映射文件-->
+    <mappers>
+        <mapper resource="com/wzx/dao/UserDao.xml"/>
+    </mappers>
+</configuration>
