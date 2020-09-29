@@ -14,7 +14,7 @@ public class MySessionUtils {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
 // 》2 创建SqlSessionFactory对象
         InputStream inputStream = MySessionUtils.class.getClassLoader().getResourceAsStream("SqlMapConfig.xml");
-         sessionFactory = sqlSessionFactoryBuilder.build(inputStream);//加载核心配置文件 参1 输入流
+        sessionFactory = sqlSessionFactoryBuilder.build(inputStream);//加载核心配置文件 参1 输入流
 //        》3 加载SqlMapConfig.xml配置文件
     }
     public static SqlSession getSession() {

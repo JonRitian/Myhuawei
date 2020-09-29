@@ -24,6 +24,6 @@
     </environments>
 <!--   一个mapper标签可以指定一个映射文件-->
     <mappers>
-        <mapper resource="com/wzx/dao/UserDao.xml"/>
+        <mapper resource="com/zx/dao/UserDao.xml"/>
     </mappers>
 </configuration>

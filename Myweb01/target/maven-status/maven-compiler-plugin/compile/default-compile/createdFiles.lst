@@ -1,3 +1,4 @@
+com\zx\util\MySessionUtils.class
+com\zx\dao\UserDao.class
 com\zx\service\UserService.class
 com\zx\domain\User.class
-com\zx\util\MySessionUtils.class

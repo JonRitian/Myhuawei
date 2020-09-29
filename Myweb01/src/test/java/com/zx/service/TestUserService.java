@@ -1,6 +1,9 @@
 package com.zx.service;
 
+import com.zx.dao.UserDao;
 import com.zx.domain.User;
+import com.zx.util.MySessionUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 public class TestUserService {
@@ -20,6 +23,15 @@ public class TestUserService {
     }
 
     @Test
+    public  void  test03(){
+        SqlSession sqlSession = MySessionUtils.getSession();
+      System.out.println(sqlSession);
+      /*  //select * from user where id =1;
+        UserDao dao = sqlSession.getMapper(UserDao.class);//内部就使用你编写接口来生成代理对象
+        */
+    }
+
+    @Test
     public  void test02(){
         //将用户信息发到后台
         UserService userService=new UserService();
@@ -27,9 +39,10 @@ public class TestUserService {
         User user=new User();
         user.setUsername("jackma");
         user.setPassword("123456");
+        user.setStatus('Y');
       int code=userService.login(user);
         //根据查找到的数据，进行判断  正确 错误 不存在
-        if(code == -1){
+        if(code ==-1){
             System.out.println("未注册");
         }
         else if(code==1){
