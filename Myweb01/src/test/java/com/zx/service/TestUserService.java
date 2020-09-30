@@ -22,14 +22,6 @@ public class TestUserService {
          }
     }
 
-    @Test
-    public  void  test03(){
-        SqlSession sqlSession = MySessionUtils.getSession();
-      System.out.println(sqlSession);
-      /*  //select * from user where id =1;
-        UserDao dao = sqlSession.getMapper(UserDao.class);//内部就使用你编写接口来生成代理对象
-        */
-    }
 
     @Test
     public  void test02(){

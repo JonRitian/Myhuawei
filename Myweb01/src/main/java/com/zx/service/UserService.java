@@ -2,7 +2,7 @@ package com.zx.service;
 
 import com.zx.dao.UserDao;
 import com.zx.domain.User;
-import com.zx.util.MySessionUtils;
+import com.zx.util.MySessionUtils2;
 import org.apache.ibatis.session.SqlSession;
 
 public class UserService {
@@ -13,8 +13,7 @@ public class UserService {
 
       //获取账号密码，对比数据库
     public int login(User user) {
-        SqlSession sqlSession = MySessionUtils.getSession();
-        UserDao userDao = sqlSession.getMapper(UserDao.class);//内部就使用你编写接口来生成代理对象
+        UserDao userDao =MySessionUtils2.getSession().getMapper(UserDao.class);//内部就使用你编写接口来生成代理对象
         User user1=userDao.findByName(user.getUsername());
         if(user1==null){
             return -1;
