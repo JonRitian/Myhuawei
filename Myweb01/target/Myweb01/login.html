@@ -18,6 +18,29 @@
     <script src="js/angular.min.js"></script>
 	<!--导入jquery-->
 	<script src="js/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			function checkUserName() {
+                var username=$("#username").val();  //获得输入框的值
+				//判断获得的值是否是符合正则表达式的规则，执行test方法进行判断
+				var reg=/^\w{8,20}$/;  //正则表达式
+				var   flag=reg.test(username); //判断
+				//如果是错误的则边框变红
+				if (flag){
+					$("#username").css("border","");
+				}else {
+					$("#username").css("border","1px solid red");
+				}
+				return flag;
+			}
+
+			//格式是否正确
+			$("#username").blur(checkUserName);  //输入框失去焦点
+			//如果正确就ajax发送请求到servlet
+		})
+
+
+	</script>
 </head>
 
 <body>
@@ -39,10 +62,10 @@
         		<div id="errorMsg" class="alert alert-danger" ></div>
 				<form id="loginForm" action="" method="post" accept-charset="utf-8">
         			<input type="hidden" name="action" value="login"/>
-					<input name="username" type="text" placeholder="请输入账号" autocomplete="off">
-        			<input name="password" type="text" placeholder="请输入密码" autocomplete="off">
+					<input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="off">
+        			<input id="password" name="password" type="text" placeholder="请输入密码" autocomplete="off">
         			<div class="verify">
-					<input name="check" type="text" placeholder="请输入验证码" autocomplete="off">
+					<input id="check" name="check" type="text" placeholder="请输入验证码" autocomplete="off">
 					<span><img src="checkCode" alt="" onclick="changeCheckCode(this)"></span>
 					<script type="text/javascript">
 						//图片点击事件
