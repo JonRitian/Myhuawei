@@ -30,7 +30,7 @@ public class UserDaoTest  {
     @Test
     public void test01() {
         //查找对象
-        User user = userDao.findByName("jackhello");
+        User user = userDao.findByName("jackma");
         //查看对象
         System.out.println(user);
 

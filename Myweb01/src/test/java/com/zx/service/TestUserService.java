@@ -29,9 +29,9 @@ public class TestUserService {
         UserService userService=new UserService();
         //查找用户信息
         User user=new User();
-        user.setUsername("jackma");
+        user.setUsername("Tom");
         user.setPassword("123456");
-        user.setStatus('Y');
+        user.setStatus('N');
       int code=userService.login(user);
         //根据查找到的数据，进行判断  正确 错误 不存在
         if(code ==-1){
@@ -41,10 +41,10 @@ public class TestUserService {
             System.out.println("注册，已激活，密码正确");
         }
         else if(code==-2){
-            System.out.println("注册，未激活");
+            System.out.println("注册，已激活，用户名或者密码不正确");
         }
         else if(code==-3){
-            System.out.println("注册，已激活，密码不正确");
+            System.out.println("注册，未激活");
         }
     }
 

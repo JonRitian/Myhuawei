@@ -19,11 +19,12 @@
 	<!--导入jquery-->
 	<script src="js/jquery-3.3.1.js"></script>
 	<script type="text/javascript">
-		$(function () {
+
+			//用户名格式校验
 			function checkUserName() {
                 var username=$("#username").val();  //获得输入框的值
 				//判断获得的值是否是符合正则表达式的规则，执行test方法进行判断
-				var reg=/^\w{8,20}$/;  //正则表达式
+				var reg=/^\w{6,20}$/;  //正则表达式
 				var   flag=reg.test(username); //判断
 				//如果是错误的则边框变红
 				if (flag){
@@ -34,10 +35,62 @@
 				return flag;
 			}
 
-			//格式是否正确
-			$("#username").blur(checkUserName);  //输入框失去焦点
-			//如果正确就ajax发送请求到servlet
-		})
+                     //密码格式校验
+			function checkPassWord() {
+				var password=$("#password").val();  //获得输入框的值
+				//判断获得的值是否是符合正则表达式的规则，执行test方法进行判断
+				var reg=/^\w{6,20}$/;  //正则表达式
+				var   flag=reg.test(password); //判断
+				//如果是错误的则边框变红
+				if (flag){
+					$("#password").css("border","");
+				}else {
+					$("#password").css("border","1px solid red");
+				}
+				return flag;
+			}
+
+			$(function () {
+				//格式是否正确
+				$("#username").blur(checkUserName);  //用户输入框失去焦点
+				$("#password").blur(checkPassWord);  //密码输入框失去焦点
+				//如果正确就ajax发送请求到servlet
+
+				$("#errorMsg").html("");
+				//ajax提交
+				$("#btn_login").click(function () {
+                        if(checkUserName()&&checkPassWord()){
+                        	var  un=$("#username").val();
+							var  pw=$("#password").val();
+							alert(un+pw);
+                        	//写提交
+							$.ajax({
+								url:"loginServlet",
+								async:true,
+								data:"username="+un+"&password="+pw,
+								type:"post",
+								dataType:"json", //服务端返回的数据类型
+								success:function (data) {
+                                      //    alert(data)  {"code":1,"data":"登录成功"
+									if(1==data.data()){
+										//跳转到主页 index.html
+										$("#errorMsg").html("");
+										window.location="index.html";
+									}else {
+										$("#errorMsg").html(data.data);
+									}
+								},
+								error:function () {
+                                              alert("服务器发生错误");
+								}
+							})
+						}
+				});
+
+			});
+
+
+
 
 
 	</script>
@@ -75,7 +128,7 @@
 					</script>
 			</div>
 			<div class="submit_btn">
-        				<button type="button">登录</button>
+        				<button id="btn_login" type="button">登录</button>
         				<div class="auto_login">
         					<input type="checkbox" name="" class="checkbox">
         					<span>自动登录</span>
