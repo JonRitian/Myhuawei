@@ -5,7 +5,7 @@
   Time: 9:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
 <html>
 
 <head>
@@ -69,16 +69,16 @@
                 if(checkUserName()&&checkPassWord()){
                     var  un=$("#username").val();
                     var  pw=$("#password").val();
-
+                    var  ck=$("#check").val();
                     //写提交
                     $.ajax({
                         url:"loginServlet",
                         async:true,
-                        data:"username="+un+"&password="+pw,
+                        data:"username="+un+"&password="+pw+"&check="+ck,
                         type:"post",
                         dataType:"json", //服务端返回的数据类型
                         success:function (data) {
-                             //   alert(data)  ("code":1,"data":"登录成功")
+                             //   alert(data)  ("code":1,  "data":"登录成功")
                            if(1==data.code){
                                 //跳转到主页 index.jsp
                                 $("#errorMsg").html("");
@@ -123,11 +123,11 @@
                 <input id="password" name="password" type="text" placeholder="请输入密码" autocomplete="off">
                 <div class="verify">
                     <input id="check" name="check" type="text" placeholder="请输入验证码" autocomplete="off">
-                    <span><img src="checkCode" alt="" onclick="changeCheckCode(this)"></span>
+                    <span><img src="${pageContext.request.contextPath}/checkCode" alt="" onclick="changeCheckCode(this)"></span>
                     <script type="text/javascript">
                         //图片点击事件
                         function changeCheckCode(img) {
-                            img.src="checkCode?"+new Date().getTime();
+                            img.src="${pageContext.request.contextPath}/checkCode?"+new Date().getTime();
                         }
                     </script>
                 </div>

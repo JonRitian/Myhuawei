@@ -22,6 +22,26 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       //从请求中拿到check01
+      String  check01=request.getParameter("check");
+        //从session中拿到check02
+        String check02=(String) request.getSession().getAttribute("CHECKCODE_SERVER");
+        System.out.println(check01);
+        System.out.println(check02);
+        //删除check02
+        request.getSession().removeAttribute("CHECKCODE_SERVER");
+        //做判断    equalsIngoreCase()  忽略大小写进行比较
+         if(check01==null || !check01.equalsIgnoreCase(check02)){
+             ResponseInfo responseInfo=new ResponseInfo();
+             responseInfo.setCode(-4);
+             responseInfo.setData("登录失败,验证码不正确");
+
+             //转化为json
+             String json=new ObjectMapper().writeValueAsString(responseInfo);
+             response.getWriter().println(json);
+             return;
+         }
+
         //接受请求获取参数
         Map<String,String[]> map=request.getParameterMap();
         User user=new User();

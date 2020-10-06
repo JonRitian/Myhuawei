@@ -2,6 +2,7 @@ com\zx\util\MySessionUtils2.class
 com\zx\domain\ResponseInfo.class
 com\zx\web\filter\CharchaterFilter.class
 com\zx\domain\User.class
+com\zx\web\servlet\CheckCodeServlet.class
 com\zx\web\servlet\LoginServlet.class
 com\zx\util\MySessionUtils.class
 com\zx\dao\UserDao.class

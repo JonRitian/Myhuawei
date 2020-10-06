@@ -6,3 +6,5 @@ E:\Travel\Myweb01\src\main\java\com\zx\util\MySessionUtils.java
 E:\Travel\Myweb01\src\main\java\com\zx\util\MySessionUtils2.java
 E:\Travel\Myweb01\src\main\java\com\zx\domain\User.java
 E:\Travel\Myweb01\src\main\java\com\zx\dao\UserDao.java
+E:\Travel\Myweb01\src\main\java\com\zx\web\servlet\CheckCodeServlet.java
+E:\Travel\Myweb01\src\main\java\com\zx\web\servlet\LoginOutServlet.java
