@@ -36,4 +36,18 @@ public class UserService {
         }
 
     }
+
+    public int register(User user){
+
+        UserDao userDao=MySessionUtils2.getSession().getMapper(UserDao.class);
+        User user2=userDao.findByName(user.getUsername());
+        if(user2 ==null){
+           userDao.save(user);
+            return 1;     //不存在,保存用户数据
+        }else {
+            return -1;  //用户已经存在
+        }
+    }
+
+
 }

@@ -7,13 +7,28 @@ public class User {
     private int uid;
     private String username;
     private String password;
-    private Date birthday;
     private String name;
+    private Date birthday;
     private String sex;
     private String telephone;
     private String email;
     private char status;
     private String code;
+
+    public  User(){}
+
+    public User(int uid, String username, String password, String name, Date birthday, String sex, String telephone, String email, char status, String code) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.telephone = telephone;
+        this.email = email;
+        this.status = status;
+        this.code = code;
+    }
 
     public int getUid() {
         return uid;
@@ -39,20 +54,20 @@ public class User {
         this.password = password;
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getSex() {
@@ -101,8 +116,8 @@ public class User {
                 "uid=" + uid +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", birthday=" + birthday +
                 ", name='" + name + '\'' +
+                ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +

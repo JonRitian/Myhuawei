@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
+
 public class UserDaoTest  {
     private SqlSession session;
     private  UserDao userDao;
@@ -34,6 +36,13 @@ public class UserDaoTest  {
         //查看对象
         System.out.println(user);
 
+    }
+
+    @Test
+    public void test02(){
+        //存放用户信息
+        User user= new User(33,"jackhello33","jackhello34","jack",new Date(),"男","3333","333@qq.com",'N',"ddd");
+     userDao.save(user);
     }
 
 

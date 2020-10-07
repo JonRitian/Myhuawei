@@ -48,6 +48,21 @@ public class TestUserService {
         }
     }
 
+    @Test
+    public  void test03(){
+        //将用户信息发到后台
+        UserService userService=new UserService();
+        //查找用户信息,准备数据
+        User user=new User();
+        user.setUsername("Tom");
+        user.setPassword("123456");
+        user.setStatus('Y');
+
+        int code=userService.register(user);
+
+
+    }
+
 
 }
 
