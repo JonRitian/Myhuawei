@@ -2,6 +2,7 @@ package com.zx.dao;
 
 import com.zx.domain.User;
 import com.zx.util.MySessionUtils;
+import com.zx.util.MySessionUtils2;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.Before;
@@ -23,7 +24,6 @@ public class UserDaoTest  {
     @After
     public void destory() throws Exception {
         System.out.println("After");
-
         //提交与关闭session
         session.commit();
         session.close();
