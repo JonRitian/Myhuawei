@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.zx.service.TestUserService
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in com.zx.service.TestUserService
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 51.196 s <<< FAILURE! - in com.zx.service.TestUserService
+test04(com.zx.service.TestUserService)  Time elapsed: 51.159 s  <<< ERROR!
+org.apache.ibatis.exceptions.PersistenceException: 
+
+### Error updating database.  Cause: java.sql.SQLException: Lock wait timeout exceeded; try restarting transaction
+### The error may involve com.zx.dao.UserDao.updateStatus-Inline
+### The error occurred while setting parameters
+### SQL: UPDATE  tab_user SET STATUS='Y' WHERE CODE=?;
+### Cause: java.sql.SQLException: Lock wait timeout exceeded; try restarting transaction
+	at com.zx.service.TestUserService.test04(TestUserService.java:73)
+Caused by: java.sql.SQLException: Lock wait timeout exceeded; try restarting transaction
+	at com.zx.service.TestUserService.test04(TestUserService.java:73)
+

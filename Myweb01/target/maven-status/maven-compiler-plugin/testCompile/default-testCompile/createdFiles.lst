@@ -1,2 +1,4 @@
-com\zx\service\TestUserService.class
+com\zx\util\UuidUtiltest.class
+com\zx\util\MailUtilsTest.class
 com\zx\dao\UserDaoTest.class
+com\zx\service\TestUserService.class

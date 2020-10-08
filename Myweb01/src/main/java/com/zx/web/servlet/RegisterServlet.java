@@ -82,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        System.out.println("注册数据"+user);
+        System.out.println("注册数据"+user.getUsername());
         //对参数处理
         UserService userService = new UserService();
         int code = userService.register(user);

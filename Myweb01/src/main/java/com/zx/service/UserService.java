@@ -2,7 +2,9 @@ package com.zx.service;
 
 import com.zx.dao.UserDao;
 import com.zx.domain.User;
+import com.zx.util.MailUtils;
 import com.zx.util.MySessionUtils2;
+import com.zx.util.UuidUtil;
 import org.apache.ibatis.session.SqlSession;
 
 public class UserService {
@@ -24,7 +26,7 @@ public class UserService {
             return -1;     //未注册
         }
          else {
-             if('Y'==user1.getStatus()){
+             if("Y"==user1.getStatus()){
                  if(user1.getUsername().equals(user.getUsername())&&user1.getPassword().equals(user.getPassword())){
                      return  1;   //登录成功
                  }else{
@@ -40,8 +42,13 @@ public class UserService {
     public int register(User user){
 
         UserDao userDao=MySessionUtils2.getSession().getMapper(UserDao.class);
-        User user2=userDao.findByName(user.getUsername());
+        User user2=userDao.findByUserName(user.getUsername());
         if(user2 ==null){
+            user.setStatus("N");  //默认未激活
+          String activeCode=UuidUtil.getUuid();    //激活码
+           user.setCode(activeCode);
+            MailUtils.sendMail(user.getEmail(),"<a href='http://localhost:8080/Myweb01_war_exploded//activeServlet?activeCode="+activeCode+"'>点击激活账户</a>","激活账户");
+            System.out.println(user);
            userDao.save(user);
             return 1;     //不存在,保存用户数据
         }else {
@@ -50,4 +57,9 @@ public class UserService {
     }
 
 
+    public int active(String activeCode) {
+       UserDao userDao=MySessionUtils2.getSession().getMapper(UserDao.class);
+       int code=userDao.updateStatus(activeCode);
+        return code;
+    }
 }

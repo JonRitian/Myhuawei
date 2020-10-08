@@ -1,9 +1,13 @@
 com\zx\util\MySessionUtils2.class
 com\zx\domain\ResponseInfo.class
+com\zx\web\servlet\ActiveServlet.class
 com\zx\web\servlet\RegisterServlet.class
+com\zx\util\MailUtils.class
+com\zx\util\UuidUtil.class
 com\zx\web\filter\CharchaterFilter.class
 com\zx\domain\User.class
 com\zx\web\servlet\CheckCodeServlet.class
+com\zx\util\MailUtils$1.class
 com\zx\web\servlet\LoginServlet.class
 com\zx\util\MySessionUtils.class
 com\zx\dao\UserDao.class

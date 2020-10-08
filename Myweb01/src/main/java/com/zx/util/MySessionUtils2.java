@@ -37,13 +37,26 @@ public class MySessionUtils2 {
     }
 
     //提交关闭session，用ThreadLocal集合
-    public static void commitAndCloseSession(){
-        SqlSession sqlSession=map.get();
-        if(sqlSession!=null){
-            sqlSession.commit();
-            sqlSession.close();
-            //已经关闭了的session不能留在local
-            //要删除
+    public static void commitAndClose(){
+        //将来进行写操作，之后需要提交，我们定义的方法
+        SqlSession session = map.get();
+        if (session != null) {
+            session.commit();//提交
+            session.close();//释放
+            //已经关闭的session不能留在local
+            //所以要删除
+            map.remove();
+        }
+    }
+
+    public static void rollbackAndClose(){
+        //将来进行写操作，之后需要提交，我们定义的方法
+        SqlSession session = map.get();
+        if (session != null) {
+            session.rollback();//回滚
+            session.close();//释放
+            //已经关闭的session不能留在local
+            //所以要删除
             map.remove();
         }
     }

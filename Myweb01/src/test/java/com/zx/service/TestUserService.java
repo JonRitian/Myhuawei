@@ -31,7 +31,7 @@ public class TestUserService {
         User user=new User();
         user.setUsername("Tom");
         user.setPassword("123456");
-        user.setStatus('N');
+        user.setStatus("N");
       int code=userService.login(user);
         //根据查找到的数据，进行判断  正确 错误 不存在
         if(code ==-1){
@@ -56,10 +56,22 @@ public class TestUserService {
         User user=new User();
         user.setUsername("Tom");
         user.setPassword("123456");
-        user.setStatus('Y');
+        user.setStatus("Y");
 
         int code=userService.register(user);
 
+
+    }
+
+    @Test
+    public  void test04(){
+        //将用户信息发到后台
+        UserService userService=new UserService();
+        //查找用户信息,准备数据
+
+
+        int code=userService.active("263db83e2a3c4a35957297fb6d4ed3e5");
+            System.out.println(code);
 
     }
 

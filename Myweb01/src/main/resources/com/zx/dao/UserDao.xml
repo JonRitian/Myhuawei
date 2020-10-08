@@ -7,10 +7,16 @@
         select * from tab_user where username = #{username};
     </select>
 
-    <insert id="save" parameterType="user" >
-        insert into tab_user values(null,#{username},
-        #{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
-    </insert>
+    <select id="findByUserName" parameterType="string" resultType="user">
+         select * from tab_user where username=#{username}
+    </select>
 
+    <insert id="save" parameterType="com.zx.domain.User" >
+      insert into tab_user values(null,#{username},#{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
+</insert>
+
+    <!--UPDATE  tab_user SET STATUS='Y' WHERE CODE='263db83e2a3c4a35957297fb6d4ed3e5';-->
+      <update id="updateStatus" parameterType="String" >
+            UPDATE  tab_user SET STATUS='Y' WHERE CODE=#{code};
+      </update>
 </mapper>
-

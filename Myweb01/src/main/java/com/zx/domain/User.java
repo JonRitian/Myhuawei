@@ -1,23 +1,43 @@
 package com.zx.domain;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.List;
 
-//用户数据
-public class User {
-    private int uid;
-    private String username;
-    private String password;
-    private String name;
-    private Date birthday;
-    private String sex;
-    private String telephone;
-    private String email;
-    private char status;
-    private String code;
+/**
+ * 用户实体类
+ */
+public class User implements Serializable {
+    private int uid;//用户id
+    private String username;//用户名，账号
+    private String password;//密码
+    private String name;//真实姓名
+    private String birthday;//出生日期
+    private String sex;//男或女
+    private String telephone;//手机号
+    private String email;//邮箱
+    private String status;//激活状态，Y代表激活，N代表未激活
+    private String code;//激活码（要求唯一）
 
-    public  User(){}
+    /**
+     * 无参构造方法
+     */
+    public User() {
+    }
 
-    public User(int uid, String username, String password, String name, Date birthday, String sex, String telephone, String email, char status, String code) {
+    /**
+     * 有参构方法
+     * @param uid
+     * @param username
+     * @param password
+     * @param name
+     * @param birthday
+     * @param sex
+     * @param telephone
+     * @param email
+     * @param status
+     * @param code
+     */
+    public User(int uid, String username, String password, String name, String birthday, String sex, String telephone, String email, String status, String code) {
         this.uid = uid;
         this.username = username;
         this.password = password;
@@ -62,11 +82,11 @@ public class User {
         this.name = name;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -94,11 +114,11 @@ public class User {
         this.email = email;
     }
 
-    public char getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(char status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -108,21 +128,5 @@ public class User {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "uid=" + uid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", birthday=" + birthday +
-                ", sex='" + sex + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                ", status=" + status +
-                ", code='" + code + '\'' +
-                '}';
     }
 }
